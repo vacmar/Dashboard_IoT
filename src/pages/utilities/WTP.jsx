@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import '../../styles/pages/Blocks.css'
+import '../../styles/components/PumpRunningHours.css'
 
 // --- Tank Block Data ---
 const initialTanks = [
@@ -122,6 +123,69 @@ const SpeedometerArc = ({ label, value, max = 100, color = '#FF6B35', unit = '' 
       </svg>
       <div className="pressure-label" style={{marginTop: 8}}>{label}</div>
       <div className="pressure-percentage">Flow Meter</div>
+    </div>
+  )
+}
+
+// --- Pump Running Hours Data ---
+const pumpSections = [
+  {
+    title: 'Garden Pump Running Hours',
+    color: 'green',
+    pumps: [
+      { name: 'Garden Pump 1', time: '0:0:0', cycles: 0, percent: 0 },
+      { name: 'Garden Pump 2', time: '0:0:0', cycles: 0, percent: 0 }
+    ]
+  },
+  {
+    title: 'HNS System Running Hours',
+    color: 'blue',
+    pumps: [
+      { name: 'HNS System 1', time: '1:50:0', cycles: 1, percent: 80 },
+      { name: 'HNS System 2', time: '0:0:0', cycles: 0, percent: 0 },
+      { name: 'HNS System 3', time: '0:0:0', cycles: 0, percent: 0 }
+    ]
+  },
+  {
+    title: 'Drain Pump Running Hours',
+    color: 'red',
+    pumps: [
+      { name: 'Drain Pump 1', time: '0:0:0', cycles: 0, percent: 0 },
+      { name: 'Drain Pump 2', time: '0:0:0', cycles: 0, percent: 0 }
+    ]
+  }
+]
+
+// --- Pump Progress Ring Component ---
+const PumpProgressRing = ({ percent, time, cycles, name, color }) => {
+  const radius = 16
+  const circumference = 2 * Math.PI * radius
+  const progress = (percent / 100) * circumference
+  return (
+    <div className={`pump-card ${color}`}>
+      <div className="progress-ring">
+        <svg viewBox="0 0 36 36">
+          <path
+            className="bg"
+            d="M18 2.0845
+              a 15.9155 15.9155 0 0 1 0 31.831
+              a 15.9155 15.9155 0 0 1 0 -31.831"
+          />
+          <path
+            className="progress"
+            d="M18 2.0845
+              a 15.9155 15.9155 0 0 1 0 31.831
+              a 15.9155 15.9155 0 0 1 0 -31.831"
+            style={{
+              strokeDasharray: `${circumference}, ${circumference}`,
+              strokeDashoffset: `${circumference - progress}`
+            }}
+          />
+        </svg>
+        <div className="pump-time">{time}</div>
+      </div>
+      <div className="pump-cycles">Cycles: {cycles}</div>
+      <div className="pump-title">{name}</div>
     </div>
   )
 }
@@ -298,6 +362,27 @@ const WTP = () => {
           ))}
         </div>
       </section>
+
+      {/* --- Pump Running Hours Section --- */}
+      <div className="pump-running-hours-container">
+        {pumpSections.map(section => (
+          <div key={section.title}>
+            <h2 className="section-title">{section.title}</h2>
+            <div className="card-grid">
+              {section.pumps.map((pump, idx) => (
+                <PumpProgressRing
+                  key={pump.name}
+                  percent={pump.percent}
+                  time={pump.time}
+                  cycles={pump.cycles}
+                  name={pump.name}
+                  color={section.color}
+                />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

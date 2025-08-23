@@ -4,6 +4,11 @@ import Dashboard from './pages/Dashboard'
 import ManPower from './pages/ManPower'
 import Blocks from './pages/Blocks'
 import WTP from './pages/utilities/WTP'
+import STP from './pages/utilities/STP'
+import Borewell from './pages/utilities/Borewell'
+import Dewatering from './pages/utilities/Dewatering'
+import Subsoil from './pages/utilities/Subsoil'
+import Garbage from './pages/utilities/Garbage'
 import './App.css'
 
 function App() {
@@ -17,10 +22,18 @@ function App() {
         return <ManPower />
       case 'blocks':
         return <Blocks />
-      case 'utilities':
-        return <div className="coming-soon">Utilities - Coming Soon</div>
       case 'wtp':
         return <WTP /> 
+      case 'stp':
+        return <STP /> 
+      case 'borewell':
+        return <Borewell />
+      case 'dewatering':
+        return <Dewatering />
+      case 'subsoil':
+        return <Subsoil />
+      case 'garbage':
+        return <Garbage />
       case 'fire-system':
         return <div className="coming-soon">Fire System - Coming Soon</div>
       case 'electrical-system':
