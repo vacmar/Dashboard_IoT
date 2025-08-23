@@ -15,7 +15,6 @@ const Sidebar = ({ activeCategory, setActiveCategory }) => {
     { id: 'dashboard', label: 'Dashboard', icon: '📊' },
     { id: 'manpower', label: 'Man Power', icon: '👥', hasSubCategories: true },
     { id: 'blocks', label: 'Blocks', icon: '🏢', hasSubCategories: true },
-    { id: 'wtp', label: 'WTP', icon: '🚰' },
     {
       id: 'utilities',
       label: 'Utilities',
