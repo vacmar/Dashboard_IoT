@@ -3,7 +3,13 @@ import '../../styles/components/Sidebar.css'
 
 const Sidebar = ({ activeCategory, setActiveCategory }) => {
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [openDropdowns, setOpenDropdowns] = useState({ utilities: false, 'utilities-water': false })
+  const [openDropdowns, setOpenDropdowns] = useState({
+    utilities: false,
+    'utilities-water': false,
+    'fire-system': false,
+    'electrical-system': false,
+    helpdesk: false
+  })
 
   const sidebarItems = [
     { id: 'dashboard', label: 'Dashboard', icon: '📊' },
@@ -31,9 +37,39 @@ const Sidebar = ({ activeCategory, setActiveCategory }) => {
         { id: 'garbage', label: 'Garbage System' }
       ]
     },
-    { id: 'fire-system', label: 'Fire System', icon: '🔥', hasSubCategories: true },
-    { id: 'electrical-system', label: 'Electrical System', icon: '⚡', hasSubCategories: true },
-    { id: 'helpdesk', label: 'HelpDesk', icon: '💬', hasSubCategories: true }
+    {
+      id: 'fire-system',
+      label: 'Fire System',
+      icon: '🔥',
+      hasSubCategories: true,
+      subCategories: [
+        { id: 'fas', label: 'FAS' },
+        { id: 'fps', label: 'FPS' },
+        { id: 'basementventilation', label: 'Basement Ventilation' }
+      ]
+    },
+    {
+      id: 'electrical-system',
+      label: 'Electrical System',
+      icon: '⚡',
+      hasSubCategories: true,
+      subCategories: [
+        { id: 'dg', label: 'DG - 3rd Party' },
+        { id: 'solar', label: 'Solar - 3rd Party' },
+        { id: 'street-light', label: 'Street Light' },
+        { id: 'gate', label: 'Gate - 3rd Party' },
+        { id: 'tneb', label: 'TNEB Service Log' }
+      ]
+    },
+    {
+      id: 'helpdesk',
+      label: 'Helpdesk',
+      icon: '💬',
+      hasSubCategories: true,
+      subCategories: [
+        { id: 'complaint-calls', label: 'Complaint Calls' }
+      ]
+    }
   ]
 
   const handleDropdownToggle = (id) => {
@@ -91,21 +127,21 @@ const Sidebar = ({ activeCategory, setActiveCategory }) => {
       <nav className="sidebar-nav">
         {sidebarItems.map(item => (
           <div key={item.id}>
-            {item.id === 'utilities' ? (
+            {item.hasSubCategories ? (
               <>
                 <button
-                  className={`nav-item ${openDropdowns.utilities ? 'active' : ''}`}
-                  onClick={() => handleDropdownToggle('utilities')}
+                  className={`nav-item ${openDropdowns[item.id] ? 'active' : ''}`}
+                  onClick={() => handleDropdownToggle(item.id)}
                   title={isCollapsed ? item.label : ''}
                   style={{ fontWeight: 'bold' }}
                 >
                   <span className="nav-icon">{item.icon}</span>
                   {!isCollapsed && <span className="nav-label">{item.label}</span>}
                   {!isCollapsed && (
-                    <span style={{ marginLeft: 'auto' }}>{openDropdowns.utilities ? '▼' : '▶'}</span>
+                    <span style={{ marginLeft: 'auto' }}>{openDropdowns[item.id] ? '▼' : '▶'}</span>
                   )}
                 </button>
-                {openDropdowns.utilities && !isCollapsed && renderSubCategories(item.subCategories, item.id)}
+                {openDropdowns[item.id] && !isCollapsed && renderSubCategories(item.subCategories, item.id)}
               </>
             ) : (
               <button

@@ -9,6 +9,9 @@ import Borewell from './pages/utilities/Borewell'
 import Dewatering from './pages/utilities/Dewatering'
 import Subsoil from './pages/utilities/Subsoil'
 import Garbage from './pages/utilities/Garbage'
+import FAS from './pages/fire/FAS'
+import Basementventilation from './pages/fire/Basementventilation'
+import FPS from './pages/fire/FPS'
 import './App.css'
 
 function App() {
@@ -34,8 +37,12 @@ function App() {
         return <Subsoil />
       case 'garbage':
         return <Garbage />
-      case 'fire-system':
-        return <div className="coming-soon">Fire System - Coming Soon</div>
+      case 'fas':
+        return <FAS />
+       case 'fps':
+        return <FPS />
+      case 'basementventilation':
+        return <Basementventilation />
       case 'electrical-system':
         return <div className="coming-soon">Electrical System - Coming Soon</div>
       case 'helpdesk':
