@@ -3,6 +3,7 @@ import Sidebar from './components/ui/Sidebar'
 import Dashboard from './pages/Dashboard'
 import ManPower from './pages/ManPower'
 import Blocks from './pages/Blocks'
+import WTP from './pages/utilities/WTP'
 import './App.css'
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
         return <Blocks />
       case 'utilities':
         return <div className="coming-soon">Utilities - Coming Soon</div>
+      case 'wtp':
+        return <WTP /> 
       case 'fire-system':
         return <div className="coming-soon">Fire System - Coming Soon</div>
       case 'electrical-system':
