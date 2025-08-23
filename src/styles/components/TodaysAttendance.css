@@ -1,0 +1,202 @@
+.todays-attendance {
+  padding: 2rem;
+}
+
+.attendance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.attendance-header h2 {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.attendance-stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.stat-value.present {
+  color: var(--text-primary);
+}
+
+.stat-value.absent {
+  color: var(--text-secondary);
+}
+
+.stat-value.total {
+  color: var(--text-primary);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.attendance-table-container {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-secondary);
+}
+
+.attendance-table thead {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+.attendance-table th {
+  padding: 1rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.attendance-table td {
+  padding: 1rem 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.9rem;
+}
+
+.attendance-table tbody tr {
+  transition: all 0.3s ease;
+}
+
+.attendance-table tbody tr:hover {
+  background-color: var(--hover-bg);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.attendance-table tbody tr.present {
+  border-left: 4px solid var(--text-primary);
+}
+
+.attendance-table tbody tr.absent {
+  border-left: 4px solid var(--text-secondary);
+  background-color: rgba(108, 117, 125, 0.05);
+}
+
+.name-cell {
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: capitalize;
+}
+
+.time-cell {
+  font-family: 'Courier New', monospace;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.hours-cell {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.leave-cell {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-badge.present {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--text-primary);
+  border: 1px solid var(--text-primary);
+}
+
+.status-badge.absent {
+  background-color: rgba(108, 117, 125, 0.1);
+  color: var(--text-secondary);
+  border: 1px solid var(--text-secondary);
+}
+
+.department-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.department-badge.permanent {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--text-primary);
+  border: 1px solid var(--text-primary);
+}
+
+.department-badge.contract {
+  background-color: rgba(108, 117, 125, 0.1);
+  color: var(--text-secondary);
+  border: 1px solid var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .todays-attendance {
+    padding: 1rem;
+  }
+  
+  .attendance-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .attendance-stats {
+    gap: 1rem;
+  }
+  
+  .attendance-table th,
+  .attendance-table td {
+    padding: 0.5rem 0.25rem;
+    font-size: 0.8rem;
+  }
+  
+  .stat-value {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .attendance-table-container {
+    font-size: 0.75rem;
+  }
+  
+  .attendance-table th:nth-child(n+6),
+  .attendance-table td:nth-child(n+6) {
+    display: none;
+  }
+}

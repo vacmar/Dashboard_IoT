@@ -1,0 +1,84 @@
+.manpower {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.manpower-header {
+  margin-bottom: 2rem;
+}
+
+.manpower-header h1 {
+  color: var(--text-primary);
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+}
+
+.sub-nav {
+  display: flex;
+  gap: 0.5rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sub-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.sub-nav-item:hover {
+  background-color: var(--hover-bg);
+  color: var(--text-primary);
+}
+
+.sub-nav-item.active {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.sub-nav-icon {
+  font-size: 1rem;
+}
+
+.sub-nav-label {
+  white-space: nowrap;
+}
+
+.manpower-content {
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sub-nav {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .sub-nav-item {
+    justify-content: center;
+  }
+  
+  .manpower-header h1 {
+    font-size: 1.5rem;
+  }
+}
